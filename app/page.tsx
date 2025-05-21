@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import RegionSelector from "@/components/region-selector"
+import RegionSelector from "@/components/region-selecter"
 import MapDisplay from "@/components/map-display"
 import DestinationList from "@/components/destination-list"
 import { regions, type Region } from "@/lib/data"
