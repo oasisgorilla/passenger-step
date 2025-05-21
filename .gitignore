@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+jest.cache/
+.next/test/
 
 # next.js
 /.next/
@@ -23,6 +25,9 @@
 # misc
 .DS_Store
 *.pem
+*.log
+*.tgz
+*.swp
 
 # debug
 npm-debug.log*
@@ -39,3 +44,14 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# === ESLint/Prettier Caches ===
+.eslintcache
+.prettiercache
+
+# === Editor Files ===
+.vscode/
+.idea/
+
+# === Tailwind JIT Mode Cache (이전 버전용) ===
+.tailwind-cache/
