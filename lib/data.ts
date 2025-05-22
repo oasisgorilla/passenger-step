@@ -53,6 +53,11 @@ export const regions: Region[] = [
         title: "Na Hye Seok Street",
         coordinates: { x: 50, y: 60 },
       },
+      {
+        id: "chicken-street",
+        title: "Chicken Street",
+        coordinates: { x: 35, y: 50 },
+      },
     ],
   },
   {
@@ -140,7 +145,7 @@ export const destinations: Destination[] = [
     shortDescription: "A historic palace used by kings during wartime.",
     description:
       "Hwaseong Haenggung is a temporary palace located within Hwaseong Fortress in Suwon. It served as a retreat for King Jeongjo during visits and military operations. The palace showcases beautiful traditional Korean architecture.",
-    image: "/images/hwaseong-haenggung.jpg",
+    image: "/images/haenggung.jpg",
     rating: 4.7,
     duration: "1-2 hours",
     highlights: ["Royal Architecture", "Cultural Performances", "Historical Exhibits"],
@@ -183,6 +188,19 @@ export const destinations: Destination[] = [
     rating: 4.3,
     duration: "1-2 hours",
     highlights: ["Street Art", "Trendy Cafes", "Nightlife"],
+    bestTimeToVisit: "Evening for dining and night strolls",
+  },
+  {
+    id: "chicken-street",
+    location: "suwon",
+    title: "Chicken Street",
+    shortDescription: "Korean traditional style chicken&beer everywhere.",
+    description:
+      "Suwon Chicken Street is a lively food alley near Hwaseong Fortress, famous for its crispy, saucy Korean fried chicken. Lined with decades-old eateries, it blends local flavor with tradition, offering a must-try experience for food lovers exploring Suwon.",
+    image: "/images/chicken-street.jpg",
+    rating: 4.6,
+    duration: "1-2 hours",
+    highlights: ["Chicken&Beer", "K-Food", "Dinner"],
     bestTimeToVisit: "Evening for dining and night strolls",
   },
 
