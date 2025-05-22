@@ -1,6 +1,6 @@
 export interface Coordinates {
-  x: number; // percentage from left
-  y: number; // percentage from top
+  lat: number; // 위도(latitude)
+  lng: number; // 경도(longitude)
 }
 
 export interface DestinationPin {
@@ -18,6 +18,7 @@ export interface Region {
 
 export interface Destination {
   id: string;
+  coordinates: Coordinates;
   title: string;
   location: string;
   shortDescription: string;
@@ -33,109 +34,109 @@ export const regions: Region[] = [
   {
     id: "suwon",
     name: "Suwon",
-    coordinates: { x: 30, y: 40 },
+    coordinates: { lat: 37.285, lng: 127.019 },
     destinations: [
       {
         id: "hwaseong-haenggung",
         title: "Hwaseong Haenggung",
-        coordinates: { x: 30, y: 40 },
+        coordinates: { lat: 37.2855, lng: 127.0143 },
       },
       {
         id: "hwaseong-fortress",
         title: "Hwaseong Fortress",
-        coordinates: { x: 60, y: 70 },
+        coordinates: { lat: 37.2863, lng: 127.0156 },
       },
       {
         id: "banghwasuryujeong-pavilion",
         title: "Banghwasuryujeong Pavilion",
-        coordinates: { x: 45, y: 30 },
+        coordinates: { lat: 37.2875, lng: 127.0180 },
       },
       {
         id: "na-hye-seok-street",
         title: "Na Hye Seok Street",
-        coordinates: { x: 50, y: 60 },
+        coordinates: { lat: 37.2638, lng: 127.0284 },
       },
       {
         id: "chicken-street",
         title: "Chicken Street",
-        coordinates: { x: 35, y: 50 },
+        coordinates: { lat: 37.2807, lng: 127.0151 },
       },
     ],
   },
   {
     id: "yongin",
     name: "Yongin",
-    coordinates: { x: 30, y: 40 },
+    coordinates: { lat: 30, lng: 40 },
     destinations: [
-      { id: "everland", title: "Everland", coordinates: { x: 40, y: 50 } },
+      { id: "everland", title: "Everland", coordinates: { lat: 40, lng: 50 }, },
       {
         id: "korean-folk-village",
         title: "Korean Folk Village",
-        coordinates: { x: 55, y: 65 },
+        coordinates: { lat: 55, lng: 65 },
       },
       {
         id: "caribbean-bay",
         title: "Caribbean Bay",
-        coordinates: { x: 35, y: 45 },
+        coordinates: { lat: 35, lng: 45 },
       },
       {
         id: "yongin-daejanggeum-park",
         title: "Dae Jang Geum Park",
-        coordinates: { x: 60, y: 30 },
+        coordinates: { lat: 60, lng: 30 },
       },
     ],
   },
   {
     id: "paju",
     name: "Paju",
-    coordinates: { x: 30, y: 40 },
+    coordinates: { lat: 30, lng: 40 },
     destinations: [
       {
         id: "heyri-art-village",
         title: "Heyri Art Village",
-        coordinates: { x: 25, y: 40 },
+        coordinates: { lat: 25, lng: 40 },
       },
       {
         id: "dmz-imjingak",
         title: "Imjingak DMZ Park",
-        coordinates: { x: 50, y: 50 },
+        coordinates: { lat: 50, lng: 50 },
       },
       {
         id: "paju-book-city",
         title: "Paju Book City",
-        coordinates: { x: 40, y: 60 },
+        coordinates: { lat: 40, lng: 60 },
       },
       {
         id: "odusan-unification-observatory",
         title: "Odusan Observatory",
-        coordinates: { x: 60, y: 30 },
+        coordinates: { lat: 60, lng: 30 },
       },
     ],
   },
   {
     id: "gapyeong",
     name: "Gapyeong",
-    coordinates: { x: 30, y: 40 },
+    coordinates: { lat: 30, lng: 40 },
     destinations: [
       {
         id: "nami-island",
         title: "Nami Island",
-        coordinates: { x: 40, y: 40 },
+        coordinates: { lat: 40, lng: 40 },
       },
       {
         id: "petite-france",
         title: "Petite France",
-        coordinates: { x: 60, y: 50 },
+        coordinates: { lat: 60, lng: 50 },
       },
       {
         id: "garden-of-morning-calm",
         title: "Garden of Morning Calm",
-        coordinates: { x: 30, y: 60 },
+        coordinates: { lat: 30, lng: 60 },
       },
       {
         id: "jade-garden",
         title: "Jade Garden",
-        coordinates: { x: 50, y: 30 },
+        coordinates: { lat: 50, lng: 30 },
       },
     ],
   },
@@ -145,6 +146,7 @@ export const destinations: Destination[] = [
   // Suwon
   {
     id: "hwaseong-haenggung",
+    coordinates: { lat: 37.2855, lng: 127.0143 },
     location: "suwon",
     title: "Hwaseong Haenggung Palace",
     shortDescription: "A historic palace used by kings during wartime.",
@@ -153,27 +155,37 @@ export const destinations: Destination[] = [
     image: "/images/haenggung.jpg",
     rating: 4.7,
     duration: "1-2 hours",
-    highlights: ["Royal Architecture", "Cultural Performances", "Historical Exhibits"],
-    bestTimeToVisit: "Spring and autumn for pleasant weather and cultural events",
+    highlights: [
+      "Royal Architecture",
+      "Cultural Performances",
+      "Historical Exhibits",
+    ],
+    bestTimeToVisit:
+      "Spring and autumn for pleasant weather and cultural events",
   },
   {
     id: "hwaseong-fortress",
+    coordinates: { lat: 37.2863, lng: 127.0156 },
     location: "suwon",
     title: "Hwaseong Fortress",
-    shortDescription: "UNESCO World Heritage site with scenic walls and towers.",
+    shortDescription:
+      "UNESCO World Heritage site with scenic walls and towers.",
     description:
       "Hwaseong Fortress is a UNESCO-listed 18th-century fortification surrounding central Suwon. It features impressive walls, gates, and observation towers, offering views and insights into Joseon-era military architecture.",
     image: "/images/hwaseong-fortress.jpg",
     rating: 4.8,
     duration: "2-3 hours",
     highlights: ["Paldalmun Gate", "Seojangdae Command Post", "Wall Walk"],
-    bestTimeToVisit: "March to May or September to November for comfortable walks",
+    bestTimeToVisit:
+      "March to May or September to November for comfortable walks",
   },
   {
     id: "banghwasuryujeong-pavilion",
+    coordinates: { lat: 37.2875, lng: 127.0180 },
     location: "suwon",
     title: "Banghwasuryujeong Pavilion",
-    shortDescription: "A peaceful pavilion with views of the fortress and sunset.",
+    shortDescription:
+      "A peaceful pavilion with views of the fortress and sunset.",
     description:
       "This pavilion sits on the northwestern side of Hwaseong Fortress and offers one of the most picturesque sunset views in Suwon. It’s known for its tranquil setting and elegant architecture.",
     image: "/images/banghwasuryujeong.jpg",
@@ -184,6 +196,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "na-hye-seok-street",
+    coordinates: { lat: 37.2638, lng: 127.0284 },
     location: "suwon",
     title: "Na Hye-Seok Street",
     shortDescription: "Trendy street named after Korea's first female painter.",
@@ -197,6 +210,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "chicken-street",
+    coordinates: { lat: 37.2807, lng: 127.0151 },
     location: "suwon",
     title: "Chicken Street",
     shortDescription: "Korean traditional style chicken&beer everywhere.",
@@ -212,6 +226,7 @@ export const destinations: Destination[] = [
   // Yongin
   {
     id: "korean-folk-village",
+    coordinates: { lat: 40, lng: 50 },
     location: "yongin",
     title: "Korean Folk Village",
     shortDescription: "A living museum of traditional Korean life.",
@@ -225,6 +240,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "caribbean-bay",
+    coordinates: { lat: 40, lng: 50 },
     location: "yongin",
     title: "Caribbean Bay",
     shortDescription: "Korea’s largest water park with rides and spas.",
@@ -238,6 +254,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "yongin-daejanggeum-park",
+    coordinates: { lat: 40, lng: 50 },
     location: "yongin",
     title: "Yongin Daejanggeum Park",
     shortDescription: "K-drama filming location with Joseon-style sets.",
@@ -253,6 +270,7 @@ export const destinations: Destination[] = [
   // Paju
   {
     id: "heyri-art-village",
+    coordinates: { lat: 40, lng: 50 },
     location: "paju",
     title: "Heyri Art Village",
     shortDescription: "Creative village of galleries, cafes, and studios.",
@@ -266,6 +284,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "dmz-imjingak",
+    coordinates: { lat: 40, lng: 50 },
     location: "paju",
     title: "DMZ & Imjingak",
     shortDescription: "Gateway to the Korean Demilitarized Zone.",
@@ -279,9 +298,11 @@ export const destinations: Destination[] = [
   },
   {
     id: "paju-book-city",
+    coordinates: { lat: 40, lng: 50 },
     location: "paju",
     title: "Paju Book City",
-    shortDescription: "Cultural complex dedicated to publishing and literature.",
+    shortDescription:
+      "Cultural complex dedicated to publishing and literature.",
     description:
       "Paju Book City is a planned city focused on books and publishing. It includes bookstores, design studios, and architecture with a minimalist aesthetic. A paradise for readers and creatives.",
     image: "/images/paju-book-city.jpg",
@@ -292,6 +313,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "odusan-unification-observatory",
+    coordinates: { lat: 40, lng: 50 },
     location: "paju",
     title: "Odusan Unification Observatory",
     shortDescription: "Viewpoint facing North Korea across the river.",
@@ -307,6 +329,7 @@ export const destinations: Destination[] = [
   // Gapyeong
   {
     id: "nami-island",
+    coordinates: { lat: 40, lng: 50 },
     location: "gapyeong",
     title: "Nami Island",
     shortDescription: "Famous island with tree-lined paths and cultural sites.",
@@ -320,6 +343,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "petite-france",
+    coordinates: { lat: 40, lng: 50 },
     location: "gapyeong",
     title: "Petite France",
     shortDescription: "French-themed cultural village in Korea.",
@@ -333,6 +357,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "garden-of-morning-calm",
+    coordinates: { lat: 40, lng: 50 },
     location: "gapyeong",
     title: "The Garden of Morning Calm",
     shortDescription: "Korea’s oldest private garden with floral beauty.",
@@ -346,6 +371,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "jade-garden",
+    coordinates: { lat: 40, lng: 50 },
     location: "gapyeong",
     title: "Jade Garden",
     shortDescription: "European-style botanical garden in the forest.",
@@ -358,4 +384,3 @@ export const destinations: Destination[] = [
     bestTimeToVisit: "Spring and summer for blooming flowers",
   },
 ];
-
