@@ -12,6 +12,7 @@ export interface DestinationPin {
 export interface Region {
   id: string;
   name: string;
+  coordinates: Coordinates;
   destinations: DestinationPin[];
 }
 
@@ -32,6 +33,7 @@ export const regions: Region[] = [
   {
     id: "suwon",
     name: "Suwon",
+    coordinates: { x: 30, y: 40 },
     destinations: [
       {
         id: "hwaseong-haenggung",
@@ -63,6 +65,7 @@ export const regions: Region[] = [
   {
     id: "yongin",
     name: "Yongin",
+    coordinates: { x: 30, y: 40 },
     destinations: [
       { id: "everland", title: "Everland", coordinates: { x: 40, y: 50 } },
       {
@@ -85,6 +88,7 @@ export const regions: Region[] = [
   {
     id: "paju",
     name: "Paju",
+    coordinates: { x: 30, y: 40 },
     destinations: [
       {
         id: "heyri-art-village",
@@ -111,6 +115,7 @@ export const regions: Region[] = [
   {
     id: "gapyeong",
     name: "Gapyeong",
+    coordinates: { x: 30, y: 40 },
     destinations: [
       {
         id: "nami-island",
