@@ -11,39 +11,44 @@ interface MapDisplayProps {
 export default function MapDisplay({ region }: MapDisplayProps) {
   const mapRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
-  const naverClientId = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
+  const googleMapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
   useEffect(() => {
     if (typeof window === "undefined" || !mapRef.current) return
 
     const initializeMap = () => {
-      const { naver } = window as any
-      if (!naver?.maps) return
+      const { google } = window as any
+      if (!google?.maps) return
 
-      const map = new naver.maps.Map(mapRef.current, {
-        center: new naver.maps.LatLng(region.coordinates.lat, region.coordinates.lng),
+      const map = new google.maps.Map(mapRef.current, {
+        center: {
+          lat: region.coordinates.lat,
+          lng: region.coordinates.lng,
+        },
         zoom: 13,
       })
 
-      // Create markers
       region.destinations.forEach((dest) => {
-        const marker = new naver.maps.Marker({
-          position: new naver.maps.LatLng(dest.coordinates.lat, dest.coordinates.lng),
+        const marker = new google.maps.Marker({
+          position: {
+            lat: dest.coordinates.lat,
+            lng: dest.coordinates.lng,
+          },
           map,
           title: dest.title,
         })
 
-        naver.maps.Event.addListener(marker, "click", () => {
+        marker.addListener("click", () => {
           router.push(`/place/${dest.id}`)
         })
       })
     }
 
-    // Wait for Naver Maps script to load
-    if (!(window as any).naver?.maps) {
+    if (!(window as any).google?.maps) {
       const script = document.createElement("script")
-      script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${naverClientId}`
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${googleMapsApiKey}`
       script.async = true
+      script.defer = true
       script.onload = initializeMap
       document.head.appendChild(script)
     } else {

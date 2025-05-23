@@ -21,7 +21,7 @@ export default function RootLayout({
       <head>
         <Script
           type="text/javascript"
-          src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${process.env.NEXT_PUBLIC_NAVER_CLIENT_ID}&callback=initMap`}
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&language=en`}
           strategy="beforeInteractive" // 가능하면 "beforeInteractive"나 "lazyOnload" 중 선택
         />
       </head>
