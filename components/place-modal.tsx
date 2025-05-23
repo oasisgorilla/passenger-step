@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { X, MapPin, Clock, Star } from "lucide-react";
-import { type Destination, type Region } from "@/lib/data";
+import { type Destination } from "@/lib/data";
 
 export default function PlaceModal({
   destination,
