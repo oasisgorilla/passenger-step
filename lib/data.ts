@@ -19,6 +19,7 @@ export interface Region {
 export interface Destination {
   id: string;
   coordinates: Coordinates;
+  relatedGroupIds?: string[]
   title: string;
   location: string;
   shortDescription: string;
@@ -28,6 +29,13 @@ export interface Destination {
   duration: string;
   highlights: string[];
   bestTimeToVisit: string;
+}
+
+export interface RelatedGroup {
+  id: string
+  title: string
+  destinationIds: string[]
+  color: string
 }
 
 export const regions: Region[] = [
@@ -147,6 +155,7 @@ export const destinations: Destination[] = [
   {
     id: "hwaseong-haenggung",
     coordinates: { lat: 37.2855, lng: 127.0143 },
+    relatedGroupIds: ["suwon-1"],
     location: "suwon",
     title: "Hwaseong Haenggung Palace",
     shortDescription: "A historic palace used by kings during wartime.",
@@ -166,6 +175,7 @@ export const destinations: Destination[] = [
   {
     id: "hwaseong-fortress",
     coordinates: { lat: 37.2863, lng: 127.0156 },
+    relatedGroupIds: ["suwon-1"],
     location: "suwon",
     title: "Hwaseong Fortress",
     shortDescription:
@@ -197,6 +207,7 @@ export const destinations: Destination[] = [
   {
     id: "na-hye-seok-street",
     coordinates: { lat: 37.2638, lng: 127.0284 },
+    relatedGroupIds: ["suwon-2"],
     location: "suwon",
     title: "Na Hye-Seok Street",
     shortDescription: "Trendy street named after Korea's first female painter.",
@@ -211,6 +222,7 @@ export const destinations: Destination[] = [
   {
     id: "chicken-street",
     coordinates: { lat: 37.2807, lng: 127.0151 },
+    relatedGroupIds: ["suwon-2"],
     location: "suwon",
     title: "Chicken Street",
     shortDescription: "Korean traditional style chicken&beer everywhere.",
@@ -382,5 +394,20 @@ export const destinations: Destination[] = [
     duration: "1-2 hours",
     highlights: ["Flower Trails", "Greenhouses", "Forest Walks"],
     bestTimeToVisit: "Spring and summer for blooming flowers",
+  },
+];
+
+export const relatedGroups: RelatedGroup[] = [
+  {
+    id: "suwon-1",
+    title: "Suwon-1",
+    destinationIds: ["hwaseong-haenggung", "hwaseong-fortress", "chicken-street"],
+    color: "#e11d48",
+  },
+  {
+    id: "suwon-2",
+    title: "Suwon-2",
+    destinationIds: ["na-hye-seok-street", "chicken-street"],
+    color: "#0891b2",
   },
 ];
