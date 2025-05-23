@@ -1,16 +1,23 @@
-"use client"
+"use client";
 
-import { ChevronDown } from "lucide-react"
-import type { Region } from "@/lib/data"
+import { ChevronDown } from "lucide-react";
+import type { Region } from "@/lib/data";
 
 interface RegionSelectorProps {
-  regions: Region[]
-  selectedRegion: string
-  onRegionChange: (regionId: string) => void
+  regions: Region[];
+  selectedRegion: string;
+  onRegionChange: (regionId: string) => void;
 }
 
-export default function RegionSelector({ regions, selectedRegion, onRegionChange }: RegionSelectorProps) {
-  const selected = regions.find((r) => r.id === selectedRegion)
+export default function RegionSelector({
+  regions,
+  selectedRegion,
+  onRegionChange,
+}: RegionSelectorProps) {
+  const selected = regions.find((r) => r.id === selectedRegion);
+  if (selected) {
+    console.log(selected!);
+  }
 
   return (
     <div className="relative">
@@ -29,5 +36,5 @@ export default function RegionSelector({ regions, selectedRegion, onRegionChange
         <ChevronDown className="h-4 w-4" />
       </div>
     </div>
-  )
+  );
 }
